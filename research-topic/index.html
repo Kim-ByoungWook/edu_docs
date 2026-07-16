@@ -1,1 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연구 아이디어를 석사 논문 주제로 — 교육대학원 신입생을 위한 공통 피드백</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2333;
+    --ink-soft:#4E5972;
+    --ink-faint:#8892A6;
+    --paper:#E9EDF2;
+    --card:#FFFFFF;
+    --pen:#C8322C;
+    --pen-wash:rgba(200,50,44,.07);
+    --rule:#D2D9E2;
+    --serif:"Gowun Batang", "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
+    --sans:"Noto Sans KR", "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
 
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.85;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+
+  .sheet{
+    max-width:1040px;
+    margin:0 auto;
+    padding:56px 28px 96px;
+  }
+
+  /* ---------- header ---------- */
+  .masthead{
+    border-top:3px solid var(--ink);
+    padding-top:22px;
+    margin-bottom:56px;
+  }
+  .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.16em;
+    color:var(--pen);
+    margin:0 0 18px;
+  }
+  .masthead h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(30px,5vw,50px);
+    line-height:1.3;
+    letter-spacing:-.02em;
+    margin:0 0 20px;
+    max-width:20ch;
+  }
+  .masthead h1 em{
+    font-style:normal;
+    color:var(--pen);
+    background:linear-gradient(transparent 62%, var(--pen-wash) 62%);
+  }
+  .deck{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin:0 0 26px;
+  }
+  .stamp{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 22px;
+    padding-top:16px;
+    border-top:1px solid var(--rule);
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- two column grid ---------- */
+  .row{
+    display:grid;
+    grid-template-columns:180px minmax(0,1fr);
+    gap:36px;
+    align-items:start;
+  }
+  .margin{
+    text-align:right;
+    padding-top:4px;
+  }
+  .margin .note{
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.6;
+    color:var(--pen);
+  }
+  .margin .note::after{
+    content:"";
+    display:block;
+    width:34px;
+    height:1px;
+    background:var(--pen);
+    margin:12px 0 0 auto;
+  }
+
+  /* ---------- intro ---------- */
+  .intro{
+    margin-bottom:64px;
+  }
+  .intro p{
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.9;
+    margin:0 0 18px;
+  }
+  .intro p:last-child{margin-bottom:0;}
+  .intro strong{
+    font-weight:700;
+    box-shadow:inset 0 -.5em 0 var(--pen-wash);
+  }
+
+  /* ---------- sections ---------- */
+  .point{
+    border-top:1px solid var(--rule);
+    padding-top:34px;
+    margin-bottom:60px;
+  }
+  .marker{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border:1.5px solid var(--pen);
+    border-radius:50%;
+    color:var(--pen);
+    font-family:var(--serif);
+    font-size:18px;
+    font-weight:700;
+    line-height:1;
+    margin-left:auto;
+  }
+  .point h2{
+    font-family:var(--serif);
+    font-size:clamp(21px,2.6vw,27px);
+    font-weight:700;
+    line-height:1.45;
+    letter-spacing:-.01em;
+    margin:0 0 18px;
+  }
+  .point p{margin:0 0 16px;}
+  .point p:last-child{margin-bottom:0;}
+  .lede{
+    color:var(--ink);
+  }
+  .point strong{font-weight:700;}
+
+  /* ---------- quoted example topic ---------- */
+  .topic{
+    margin:24px 0;
+    padding:20px 22px;
+    background:var(--card);
+    border-left:3px solid var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.7;
+  }
+  .topic .tag{
+    display:block;
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.14em;
+    color:var(--ink-faint);
+    margin-bottom:8px;
+  }
+
+  /* ---------- pen queries ---------- */
+  .queries{
+    list-style:none;
+    margin:22px 0;
+    padding:0;
+    display:grid;
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+  }
+  .queries li{
+    background:var(--card);
+    padding:14px 18px;
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+    font-size:15px;
+  }
+  .queries li::before{
+    content:"?";
+    flex:none;
+    font-family:var(--serif);
+    font-weight:700;
+    color:var(--pen);
+    font-size:17px;
+  }
+
+  /* ---------- diagram ---------- */
+  figure{
+    margin:28px 0;
+    padding:26px 22px 20px;
+    background:var(--card);
+    border:1px solid var(--rule);
+  }
+  figure svg{width:100%;height:auto;display:block;}
+  figcaption{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid var(--rule);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- reading card (point 5) ---------- */
+  .reading{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin:24px 0;
+  }
+  .reading div{
+    background:var(--card);
+    padding:20px;
+  }
+  .reading .num{
+    font-family:var(--serif);
+    font-size:12px;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    display:block;
+    margin-bottom:6px;
+  }
+  .reading h3{
+    font-family:var(--serif);
+    font-size:18px;
+    font-weight:700;
+    margin:0 0 6px;
+  }
+  .reading p{
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .reading .flag{
+    background:#FBF1F0;
+  }
+  .reading .flag h3{color:var(--pen);}
+  .reading .flag .num{color:var(--pen);}
+
+  /* ---------- closing ---------- */
+  .closing{
+    border-top:3px solid var(--ink);
+    padding-top:34px;
+  }
+  .closing h2{
+    font-family:var(--serif);
+    font-size:24px;
+    font-weight:700;
+    margin:0 0 6px;
+  }
+  .closing .sub{
+    font-size:14px;
+    color:var(--ink-faint);
+    margin:0 0 24px;
+  }
+  .checklist{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:10px;
+  }
+  .checklist li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:var(--card);
+    border:1px solid var(--rule);
+    padding:14px 18px;
+    font-size:15px;
+  }
+  .checklist li::before{
+    content:"";
+    flex:none;
+    width:15px;
+    height:15px;
+    margin-top:6px;
+    border:1.5px solid var(--pen);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:820px){
+    .sheet{padding:40px 20px 72px;}
+    .row{grid-template-columns:1fr;gap:14px;}
+    .margin{text-align:left;padding-top:0;}
+    .margin .note::after{margin:10px auto 0 0;}
+    .marker{margin-left:0;}
+    .reading{grid-template-columns:1fr;}
+    .intro p{font-size:17px;}
+  }
+
+  @media print{
+    body{background:#fff;}
+    .sheet{padding:0;max-width:none;}
+    .point{break-inside:avoid;}
+    figure,.reading,.queries,.checklist li{break-inside:avoid;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .point,.intro,.closing{animation:rise .5s ease-out both;}
+    .point:nth-of-type(2){animation-delay:.04s;}
+    .point:nth-of-type(3){animation-delay:.08s;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="eyebrow">교육대학원 석사과정 · 연구 주제 탐색 공통 피드백</p>
+    <h1>연구 아이디어를 <em>논문 주제</em>로 옮기기 전에</h1>
+    <p class="deck">입학 후 처음 제출하는 연구 주제 탐색 과제에는 거의 같은 다섯 가지 조언이 붙습니다. 아이디어가 부족해서가 아니라, 아이디어와 논문 주제 사이에 남아 있는 거리 때문입니다.</p>
+    <div class="stamp">
+      <span>다섯 가지 점검 사항</span>
+      <span>주제 탐색 단계에서 읽을 것</span>
+    </div>
+  </header>
+
+  <section class="row intro">
+    <div class="margin">
+      <p class="note">잘한 점부터</p>
+    </div>
+    <div>
+      <p>최근 AI와 교육 분야의 논문을 찾아보고, 각 논문의 결과를 바탕으로 새로운 연구 주제를 고민해 본 점은 매우 좋았습니다. 특히 단순히 논문의 내용을 정리하는 데서 그치지 않고, <strong>자신의 연구 아이디어로 발전시키려는 노력</strong>이 보였습니다.</p>
+      <p>다만 이 단계에서 제시되는 주제들은 아직 <strong>연구 아이디어 수준</strong>입니다. 실제 석사 논문 주제로 발전시키기 위해서는 다음 다섯 가지를 더 고민해야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- 1 -->
+  <section class="row point">
+    <div class="margin"><span class="marker">1</span></div>
+    <div>
+      <h2>연구 주제를 조금 더 좁힐 필요가 있습니다</h2>
+      <p class="lede">제안한 주제들은 대체로 흥미롭지만 범위가 상당히 넓습니다. 예를 들어 다음과 같은 주제를 생각해 봅시다.</p>
+
+      <blockquote class="topic">
+        <span class="tag">예시 주제</span>
+        생성형 AI 활용 정보 수업에서 인터페이스 통제 유형이 학습자의 개념 이해와 장기 기억에 미치는 영향
+      </blockquote>
+
+      <p>이 문장만으로는 다음이 아직 구체적이지 않습니다.</p>
+      <ul class="queries">
+        <li>어떤 생성형 AI를 사용할 것인지</li>
+        <li>어떤 정보 수업인지</li>
+        <li>어떤 개념을 학습하는지</li>
+        <li>인터페이스 통제는 정확히 무엇을 의미하는지</li>
+      </ul>
+      <p>연구 주제는 한 문장으로 표현되더라도, 실제 연구에서는 <strong>독립변수와 종속변수가 명확해야 합니다.</strong></p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="row point">
+    <div class="margin"><span class="marker">2</span></div>
+    <div>
+      <h2>“재미있는 주제”보다 “실험 가능한 주제”인지 먼저 생각해 보세요</h2>
+      <p class="lede">좋은 연구는 흥미로운 주제이기도 하지만, 무엇보다 <strong>실제로 수행 가능한 연구</strong>여야 합니다.</p>
+
+      <blockquote class="topic">
+        <span class="tag">예시 연구모형</span>
+        숏폼 과의존 → AI 의존 → 컴퓨팅 문제해결 역량
+      </blockquote>
+
+      <p>이 연구는 매우 흥미롭지만, 시작하려면 다음을 모두 해결해야 합니다.</p>
+      <ul class="queries">
+        <li>숏폼 과의존은 어떻게 측정할 것인지</li>
+        <li>AI 무비판적 의존성을 어떻게 측정할 것인지</li>
+        <li>컴퓨팅 문제해결 역량은 어떤 도구로 평가할 것인지</li>
+      </ul>
+      <p>즉, 연구모형을 만드는 것보다 <strong>측정 가능한 변수인지를 먼저 확인하는 것</strong>이 중요합니다.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="row point">
+    <div class="margin"><span class="marker">3</span></div>
+    <div>
+      <h2>기존 논문과 무엇이 다른지 고민해 보세요</h2>
+      <p class="lede">주제 탐색 단계의 아이디어는 대부분 <strong>기존 연구 + AI</strong> 형태입니다. 예를 들어 노트 필기 연구, 멀티태스킹 연구, 자기조절 연구에 AI를 접목한 형태입니다.</p>
+      <p>이 자체는 좋은 출발점입니다. 다만 <strong>왜 AI를 적용하면 새로운 연구가 되는지</strong>를 조금 더 명확하게 설명할 수 있어야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="row point">
+    <div class="margin"><span class="marker">4</span></div>
+    <div>
+      <h2>변수를 너무 많이 넣지 않는 것이 좋습니다</h2>
+      <p class="lede">초기 연구에서는 <strong>독립변수 1개, 종속변수 1~2개</strong> 정도로 시작하는 것이 좋습니다.</p>
+
+      <figure>
+        <svg viewBox="0 0 720 300" role="img" aria-label="변수를 많이 넣은 복잡한 모형과, 독립변수 하나에 종속변수 하나로 단순화한 모형을 비교한 그림">
+          <defs>
+            <marker id="ar-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#8892A6"/>
+            </marker>
+            <marker id="ar-pen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#C8322C"/>
+            </marker>
+          </defs>
+
+          <!-- divider -->
+          <line x1="360" y1="8" x2="360" y2="292" stroke="#D2D9E2" stroke-width="1" stroke-dasharray="3 5"/>
+
+          <!-- panel A label -->
+          <text x="0" y="16" font-family="Noto Sans KR, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#8892A6">복잡해지는 모형</text>
+
+          <!-- panel A boxes -->
+          <g font-family="Noto Sans KR, sans-serif" font-size="12.5" fill="#4E5972" text-anchor="middle">
+            <rect x="4"   y="46"  width="96" height="34" fill="#fff" stroke="#C3CCD8"/><text x="52"  y="68">숏폼</text>
+            <rect x="128" y="46"  width="112" height="34" fill="#fff" stroke="#C3CCD8"/><text x="184" y="68">AI 의존</text>
+            <rect x="240" y="112" width="104" height="34" fill="#fff" stroke="#C3CCD8"/><text x="292" y="134">AI 리터러시</text>
+            <rect x="14"  y="126" width="104" height="34" fill="#fff" stroke="#C3CCD8"/><text x="66"  y="148">자기조절</text>
+            <rect x="88"  y="200" width="112" height="34" fill="#fff" stroke="#C3CCD8"/><text x="144" y="222">컴퓨팅 사고</text>
+            <rect x="216" y="248" width="128" height="34" fill="#fff" stroke="#C3CCD8"/><text x="280" y="270">문제해결 역량</text>
+          </g>
+
+          <!-- panel A arrows -->
+          <g stroke="#8892A6" stroke-width="1.1" fill="none" marker-end="url(#ar-faint)" opacity=".85">
+            <path d="M100,63 L124,63"/>
+            <path d="M184,80 L184,102 L236,124"/>
+            <path d="M66,80 L66,122"/>
+            <path d="M118,146 L134,146 L142,196"/>
+            <path d="M292,146 L292,190 L286,244"/>
+            <path d="M200,220 L212,244"/>
+            <path d="M164,80 L120,196" stroke-dasharray="4 4"/>
+            <path d="M240,128 L120,214" stroke-dasharray="4 4"/>
+          </g>
+
+          <!-- panel B label -->
+          <text x="392" y="16" font-family="Noto Sans KR, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#C8322C">시작하기 좋은 모형</text>
+
+          <!-- panel B: model 1 -->
+          <g font-family="Noto Sans KR, sans-serif" text-anchor="middle">
+            <text x="452" y="60" font-size="11" letter-spacing="1" fill="#8892A6">독립변수</text>
+            <rect x="392" y="72" width="120" height="46" fill="#fff" stroke="#1B2333" stroke-width="1.5"/>
+            <text x="452" y="101" font-size="14" fill="#1B2333">AI 사용 방식</text>
+
+            <text x="644" y="60" font-size="11" letter-spacing="1" fill="#8892A6">종속변수</text>
+            <rect x="584" y="72" width="120" height="46" fill="#fff" stroke="#1B2333" stroke-width="1.5"/>
+            <text x="644" y="101" font-size="14" fill="#1B2333">개념 이해</text>
+          </g>
+          <line x1="516" y1="95" x2="578" y2="95" stroke="#C8322C" stroke-width="1.6" marker-end="url(#ar-pen)"/>
+
+          <!-- or -->
+          <text x="548" y="152" font-family="Gowun Batang, serif" font-size="13" fill="#8892A6" text-anchor="middle">또는</text>
+
+          <!-- panel B: model 2 -->
+          <g font-family="Noto Sans KR, sans-serif" text-anchor="middle">
+            <rect x="392" y="176" width="120" height="46" fill="#fff" stroke="#1B2333" stroke-width="1.5"/>
+            <text x="452" y="205" font-size="14" fill="#1B2333">AI 피드백 방식</text>
+
+            <rect x="584" y="176" width="120" height="46" fill="#fff" stroke="#1B2333" stroke-width="1.5"/>
+            <text x="644" y="199" font-size="13.5" fill="#1B2333">자기조절</text>
+            <text x="644" y="215" font-size="13.5" fill="#1B2333">학습</text>
+          </g>
+          <line x1="516" y1="199" x2="578" y2="199" stroke="#C8322C" stroke-width="1.6" marker-end="url(#ar-pen)"/>
+
+          <text x="548" y="266" font-family="Gowun Batang, serif" font-size="13.5" fill="#C8322C" text-anchor="middle">이 정도만 되어도 충분히 좋은 석사 논문이 됩니다</text>
+        </svg>
+        <figcaption>숏폼, AI 의존, AI 리터러시, 자기조절, 컴퓨팅 사고, 문제해결 역량을 모두 포함하면 연구가 지나치게 복잡해집니다. 화살표 하나하나가 모두 검증해야 할 가설이고, 상자 하나하나가 모두 확보해야 할 측정 도구입니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="row point">
+    <div class="margin"><span class="marker">5</span></div>
+    <div>
+      <h2>논문을 조금 더 비판적으로 읽어보세요</h2>
+      <p class="lede">지금까지의 정리는 대부분 <strong>논문의 결과</strong> 위주입니다. 앞으로는 다음 네 가지를 함께 정리해 보길 바랍니다.</p>
+
+      <div class="reading">
+        <div>
+          <span class="num">하나</span>
+          <h3>연구 목적</h3>
+          <p>이 연구가 답하려 한 질문은 무엇인가</p>
+        </div>
+        <div>
+          <span class="num">둘</span>
+          <h3>연구 방법</h3>
+          <p>연구 대상은 누구이고, 실험은 어떻게 설계했는가</p>
+        </div>
+        <div>
+          <span class="num">셋</span>
+          <h3>핵심 결과</h3>
+          <p>무엇이 확인되었는가</p>
+        </div>
+        <div class="flag">
+          <span class="num">넷</span>
+          <h3>연구의 한계</h3>
+          <p>저자가 스스로 밝힌, 이 연구가 하지 못한 것</p>
+        </div>
+      </div>
+
+      <p>특히 <strong>논문의 한계(Limitation)</strong>를 읽으면 새로운 연구 주제를 찾는 데 큰 도움이 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- closing -->
+  <section class="row closing">
+    <div class="margin">
+      <p class="note">주제를 다시 쓰기 전에</p>
+    </div>
+    <div>
+      <h2>점검 목록</h2>
+      <p class="sub">다섯 가지 조언을 한 번에 확인할 수 있도록 정리했습니다.</p>
+      <ul class="checklist">
+        <li>주제 문장 안의 대상, 도구, 학습 내용, 처치가 각각 무엇인지 말할 수 있다</li>
+        <li>독립변수와 종속변수를 각각 한 문장으로 지목할 수 있다</li>
+        <li>모든 변수에 대해 “무엇으로 측정할 것인가”에 답할 수 있다</li>
+        <li>기존 연구에 AI를 붙였을 때 왜 새로운 연구가 되는지 설명할 수 있다</li>
+        <li>변수가 독립변수 1개, 종속변수 1~2개 수준으로 정리되어 있다</li>
+        <li>읽은 논문마다 연구 목적, 연구 방법, 핵심 결과, 연구의 한계를 정리해 두었다</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
